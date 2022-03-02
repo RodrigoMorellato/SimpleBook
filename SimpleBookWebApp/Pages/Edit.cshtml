@@ -1,0 +1,76 @@
+﻿@page
+@model SimpleBookWebApp.Pages.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Book</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="Book.Id" type="hidden" class="form-control" />
+            @*<div class="form-group">
+                <label asp-for="Book.Id" class="control-label"></label>
+                <input asp-for="Book.Id" class="form-control" />
+                <span asp-validation-for="Book.Name" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Book.Name" class="control-label"></label>
+                <input asp-for="Book.Name" class="form-control" />
+                <span asp-validation-for="Book.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book.Author" class="control-label"></label>
+                <input asp-for="Book.Author" class="form-control" />
+                <span asp-validation-for="Book.Author" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book.Registration" class="control-label"></label>
+                <input asp-for="Book.Registration" class="form-control" />
+                <span asp-validation-for="Book.Registration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book.Category" class="control-label"></label>
+                <select asp-for="Book.Category" id="Category" class="form-control">
+                    <option value="">---Select Category---</option>
+                    <option value="Thriller">Thriller</option>
+                    <option value="History">History</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Biography">Biography</option>
+                </select>
+                <span asp-validation-for="Book.Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book.Description" class="control-label"></label>
+                <input asp-for="Book.Description" class="form-control" />
+                <span asp-validation-for="Book.Description" class="text-danger"></span>
+            </div>
+            <hr />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
+    @if (ViewData["Message"] != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewData["Message"]");
+            };
+        </script>
+    }
+}
